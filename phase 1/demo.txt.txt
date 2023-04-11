@@ -1,0 +1,35 @@
+->remove dodgy images
+basically remove the images which aren't following the required formats
+
+->load dataset
+
+it will resize images to maybe like (256,256) , it will batch images into batch of 32, also 
+creates a validation split.
+using numpy we create a data iterator using numpy , similarly a batch iterator also is 
+created 
+
+->preprocess data
+tf.data input pipelines : we are using a map function which we scale our data between 
+0.0 and 1.0 instead of 0 and 255
+
+->build model
+ sequential api model building api for single input and single output type
+api to add layers to the model , the filters we apply to the model become the classifying parameter 
+that are learned by CNN here the pooling layers work on each feature map independantly and reduce the 
+overall computations and avoid overfitting  by decreasing the spatial size of the 
+representation matrix ,The fully connected layers are 
+responsible for classifying and mapping the learned features 
+into the sample datasets.The optimization of the network 
+model and increased accuracy can be achieved with the help 
+of loss functions.For calculating the gradient and optimizing the 
+weights, we deploy AdamOptimizer.We then apply ReLU Activation function to 
+introduce non-linearity to the model.The output of the dropout layer is fed into the flattening layer 
+to convert the multi ranked tensor to a 1 rank tensor which is 
+fed into first fully connected layer with 128 neurons and 
+ReLU function is applied to the output of the first fully 
+connected layer which is then fed to the second fully 
+connected layer which then passes the data into softmax 
+classifier which then finally gives the class of the image 
+provided to the network.Initially our model saw 
+overfitting to a great extent which was reduced by introducing 
+a dropout layer before the flattening Layer
